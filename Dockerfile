@@ -37,6 +37,9 @@ RUN mkdir -p /var/lib/slurm-llnl /var/log/slurm-llnl /run/munge /home/practice_h
 # 5. Copy file cấu hình vào image
 COPY slurm.conf /etc/slurm-llnl/slurm.conf
 COPY entrypoint.sh /entrypoint.sh
+# --- THÊM DÒNG NÀY ĐỂ FIX LỖI WINDOWS ---
+RUN dos2unix /entrypoint.sh
+
 RUN chmod +x /entrypoint.sh
 
 # Port SSH, Slurmctld, Slurmd
