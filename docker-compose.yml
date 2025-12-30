@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+  login_node:
+    build: .
+    hostname: login_node
+    container_name: hpc_login
+    ports:
+      - "2222:22" # SSH Port
+    volumes:
+      - ./workspace:/home/practice_hpc/shared
+    networks:
+      - hpc_net
+
+  node1:
+    build: .
+    hostname: node1
+    container_name: hpc_node1
+    volumes:
+      - ./workspace:/home/practice_hpc/shared
+    networks:
+      - hpc_net
+    depends_on:
+      - login_node
+
+  node2:
+    build: .
+    hostname: node2
+    container_name: hpc_node2
+    volumes:
+      - ./workspace:/home/practice_hpc/shared
+    networks:
+      - hpc_net
+    depends_on:
+      - login_node
+
+networks:
+  hpc_net:
+    driver: bridge
