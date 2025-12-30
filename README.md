@@ -106,4 +106,4 @@ Phù hợp để:
 
 - Lưu kết quả tính toán
 
-(Vị trí cụ thể được cấu hình trong docker-compose.yml)
+(Vị trí cụ thể được cấu hình trong docker-compose.yml, hiện tại đang là thư mục hpc-lab/workspace)
